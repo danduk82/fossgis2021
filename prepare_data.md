@@ -33,6 +33,14 @@ baremaps edit \
   --style 'style.json'
 ```
 
+## materialized views for OSM
+
+the files are run in the input order
+
+```bash
+baremaps execute --database 'jdbc:postgresql://localhost:5432/baremaps?&user=baremaps&password=baremaps' --file 'queries/osm_create_views.sql' --file 'queries/osm_create_gist_indexes.sql'
+```
+
 ## create a custom dataset
 
 ```bash

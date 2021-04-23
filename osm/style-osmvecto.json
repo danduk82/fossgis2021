@@ -13,7 +13,7 @@
   "zoom" : 14.0,
   "sources" : {
     "baremaps" : {
-      "url" : "http://localhost:9001/tiles.json",
+      "url" : "http://localhost:9000/tiles.json",
       "type" : "vector"
     }
   },
@@ -1157,7 +1157,7 @@
         ]
       ],
       "layout" : {
-        "visibility" : "visible"
+        "visibility" : "none"
       },
       "paint" : {
         "fill-color" : "rgb(255, 241, 186)",
@@ -1263,7 +1263,7 @@
         "visibility" : "visible"
       },
       "paint" : {
-        "fill-color" : "rgb(170, 211, 223)",
+        "fill-color" : "rgba(0, 145, 185, 1)",
         "fill-antialias" : true,
         "fill-outline-color" : "rgb(170, 211, 223)"
       }
@@ -1274,7 +1274,7 @@
       "source" : "baremaps",
       "source-layer" : "waterway",
       "layout" : {
-        "visibility" : "visible",
+        "visibility" : "none",
         "line-cap" : "round",
         "line-join" : "round"
       },
@@ -2607,7 +2607,7 @@
       "source" : "baremaps",
       "source-layer" : "route",
       "layout" : {
-        "visibility" : "visible",
+        "visibility" : "none",
         "line-cap" : "round",
         "line-join" : "round"
       },
@@ -2626,7 +2626,7 @@
       "source" : "baremaps",
       "source-layer" : "boundary",
       "layout" : {
-        "visibility" : "visible",
+        "visibility" : "none",
         "line-cap" : "round",
         "line-join" : "round"
       },
@@ -2670,7 +2670,7 @@
         ]
       ],
       "layout" : {
-        "visibility" : "visible"
+        "visibility" : "none"
       },
       "paint" : {
         "circle-color" : "rgb(171, 171, 171)",
@@ -2901,6 +2901,12 @@
         },
         "line-color" : "rgb(171, 171, 171)"
       }
+    },
+    {
+      "id" : "custom",
+      "type" : "circle",
+      "source" : "baremaps",
+      "source-layer" : "custom"
     }
   ],
   "reload" : false

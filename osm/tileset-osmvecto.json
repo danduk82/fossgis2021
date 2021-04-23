@@ -217,11 +217,6 @@
       "queries": [
         {
           "minZoom": 0,
-          "maxZoom": 14,
-          "sql": "SELECT ogc_fid, hstore(''), geometry\nFROM osm_water_polygons\n"
-        },
-        {
-          "minZoom": 0,
           "maxZoom": 20,
           "sql": "SELECT id, tags, geom \nFROM osm_ways_z${zoom} \nWHERE geometrytype(geom) LIKE '%POLYGON%'\n  AND (tags -> 'natural' = 'water' OR tags -> 'waterway' IN ('riverbank', 'dock'))\n"
         },
@@ -229,6 +224,16 @@
           "minZoom": 0,
           "maxZoom": 20,
           "sql": "SELECT id, tags, geom \nFROM osm_relations_z${zoom} \nWHERE geometrytype(geom) LIKE '%POLYGON%'\n  AND (tags -> 'natural' = 'water' OR tags -> 'waterway' IN ('riverbank', 'dock'))\n"
+        }
+      ]
+    },
+    {
+      "id": "custom",
+      "queries": [
+        {
+          "minZoom": 0,
+          "maxZoom": 20,
+          "sql": "select id, hstore('importance', importance::text) || hstore('name', name::text), geom from custom.custom"
         }
       ]
     }
