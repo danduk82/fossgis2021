@@ -1,9 +1,20 @@
 # Installation
 
+## prerequisites
+
+these examples have been tested on Ubuntu linux 18.04. You also need at least:
+
+- docker (for the test database)
+- java runtime version >= 11
+
 ## Install baremaps
 
 ```bash
-wget https://github.com/baremaps/baremaps/releases/latest/download/baremaps.zip
+# download the latest version
+#wget https://github.com/baremaps/baremaps/releases/latest/download/baremaps.zip
+
+# use a fixed version so the examples are still working in the future
+wget https://github.com/baremaps/baremaps/releases/download/v0.5.3/baremaps.zip
 unzip baremaps.zip && rm baremaps.zip
 export PATH=$PATH:`pwd`/baremaps/bin
 ```

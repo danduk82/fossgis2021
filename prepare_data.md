@@ -58,3 +58,17 @@ baremaps execute --database 'jdbc:postgresql://localhost:5432/baremaps?&user=bar
 ```bash
 
 ```
+
+## update the tileset JSON with custom bounds
+
+for Lausanne:
+
+```json
+"bounds": [6.36, 46.070, 6.53, 46.53946],
+```
+
+## export the tiles
+
+```bash
+baremaps export --database 'jdbc:postgresql://localhost:5432/baremaps?user=baremaps&password=baremaps' --tileset presentation/osm/tileset-osmvecto.json --repository tiles/
+```

@@ -2,15 +2,15 @@
   "version" : 8,
   "name" : "OpenStreetMapVecto",
   "center" : [
-    6.5743,
-    46.5189
+    6.42642,
+    46.50883
   ],
-  "glyphs" : "https://tiles.baremaps.com/fonts/{fontstack}/{range}.pbf",
+  "glyphs" : "https://vectortiles.geo.admin.ch/fonts/{fontstack}/{range}.pbf",
   "metadata" : {
     "maputnik:renderer" : "mbgljs"
   },
   "sprite" : "",
-  "zoom" : 14.0,
+  "zoom" : 12.0,
   "sources" : {
     "baremaps" : {
       "url" : "http://localhost:9000/tiles.json",
@@ -2906,7 +2906,48 @@
       "id" : "custom",
       "type" : "circle",
       "source" : "baremaps",
-      "source-layer" : "custom"
+      "source-layer" : "custom",
+      "layout" : {
+        "visibility" : "none"
+      },
+      "paint" : {
+        "circle-color" : "rgba(6, 222, 8, 1)",
+        "circle-stroke-color" : "rgba(228, 1, 136, 1)",
+        "circle-stroke-width" : 12
+      }
+    },
+    {
+      "id" : "customlabel",
+      "type" : "symbol",
+      "source" : "baremaps",
+      "source-layer" : "custom",
+      "filter" : [
+        "all"
+      ],
+      "layout" : {
+        "symbol-placement" : "point",
+        "symbol-spacing" : 350,
+        "symbol-z-order" : "auto",
+        "text-allow-overlap" : false,
+        "text-field" : "{name}",
+        "text-font" : [
+          "Frutiger Neue Italic"
+        ],
+        "text-ignore-placement" : false,
+        "text-keep-upright" : true,
+        "text-letter-spacing" : 0.05,
+        "text-max-width" : 1000,
+        "text-pitch-alignment" : "map",
+        "text-rotation-alignment" : "viewport",
+        "text-size" : 16,
+        "visibility" : "visible"
+      },
+      "paint" : {
+        "text-color" : "rgba(20, 136, 205, 1)",
+        "text-halo-blur" : 1,
+        "text-halo-color" : "rgba(242, 242, 242, 0.7)",
+        "text-halo-width" : 1
+      }
     }
   ],
   "reload" : false
