@@ -43,21 +43,28 @@ baremaps execute --database 'jdbc:postgresql://localhost:5432/baremaps?&user=bar
 
 ## create a custom dataset
 
-```bash
-
-```
+here, we create a postgis table for points, with only the attributes "name" and "importance". use the tool of your choice to create a few points
 
 ## import the custom dataset
 
-```bash
+to import the dataset, simply add a section that specifies and ID (should be unique), and the SQL statement used to retrive the data, like so:
 
+```json
+{
+  "id": "custom",
+  "queries": [
+    {
+      "minZoom": 0,
+      "maxZoom": 20,
+      "sql": "select id, hstore('importance', importance::text) || hstore('name', name::text), geom from custom.custom"
+    }
+  ]
+}
 ```
 
-## prepare it
+## (optional) additional preparation
 
-```bash
-
-```
+it might be useful to add indexes, simplified geometries for other zoom levels, etc
 
 ## update the tileset JSON with custom bounds
 
@@ -72,3 +79,71 @@ for Lausanne:
 ```bash
 baremaps export --database 'jdbc:postgresql://localhost:5432/baremaps?user=baremaps&password=baremaps' --tileset presentation/osm/tileset-osmvecto.json --repository tiles/
 ```
+
+copy the content of the directory `tiles/` to your server so that they can be accessed, e.g. at the following URL : https://your.domain.com/some/url/tiles/{z}/{x}/{y}.mvt
+
+## copy and adapt both the style and tileset
+
+in the style.json adapt the sources so that the URL points to your server
+
+```bash
+curl localhost:9000/style.json | jq '' > /tmp/style.json
+```
+
+```json
+  "sources": {
+    "baremaps": {
+      "url": "http://localhost:9000/tiles.json",
+      "type": "vector"
+    }
+  },
+```
+
+should become:
+
+```json
+  "sources": {
+    "baremaps": {
+      "url": "https://your.domain.com/some/url/tiles.json",
+      "type": "vector"
+    }
+  },
+```
+
+Do the same in the tileset.json
+
+```bash
+curl localhost:9000/tiles.json | jq '' > /tmp/tiles.json
+```
+
+you should modify:
+
+```json
+  "tiles": [
+    "http://localhost:9000/tiles/{z}/{x}/{y}.mvt"
+  ],
+
+```
+
+to
+
+```json
+  "tiles": [
+    "https://your.domain.com/some/url/tiles/{z}/{x}/{y}.mvt"
+  ],
+
+```
+
+## setup of the server
+
+then copy these files on your server accordingly.
+
+It is important that when the browser retrieves the tiles, they are served with the correct headers. These are headers that work in most of the cases:
+
+```
+access-control-allow-origin: *
+content-encoding: gzip
+content-type: application/vnd.mapbox-vector-tile
+```
+
+Ensure that your server serves them with the correct content-type
