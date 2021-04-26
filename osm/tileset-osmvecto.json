@@ -5,10 +5,11 @@
     46.50883,
     12.0
   ],
+  "bounds": [6.36, 46.070, 6.53, 46.53946],
   "minZoom": 6.0,
   "maxZoom": 14.0,
   "tiles": [
-    "http://localhost:9001/tiles/{z}/{x}/{y}.mvt"
+    "http://localhost:9000/tiles/{z}/{x}/{y}.mvt"
   ],
   "vector_layers": [
     {
