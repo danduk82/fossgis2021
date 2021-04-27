@@ -1263,7 +1263,7 @@
         "visibility" : "visible"
       },
       "paint" : {
-        "fill-color" : "rgba(6, 127, 158, 1)",
+        "fill-color" : "rgba(5, 102, 127, 1)",
         "fill-antialias" : true,
         "fill-outline-color" : "rgb(170, 211, 223)"
       }
@@ -2900,6 +2900,17 @@
           ]
         },
         "line-color" : "rgb(171, 171, 171)"
+      }
+    },
+    {
+      "id" : "custom",
+      "type" : "circle",
+      "source" : "baremaps",
+      "source-layer" : "custom",
+      "paint" : {
+        "circle-color" : "rgba(245, 5, 5, 1)",
+        "circle-stroke-color" : "rgba(8, 6, 6, 1)",
+        "circle-stroke-width" : 1
       }
     }
   ],
