@@ -31,7 +31,7 @@ sudo update-alternatives --config jar
 
 ```bash
 docker run \
-  --name baremaps-db \
+  --name baremaps-db-test \
   --publish 5432:5432 \
   -e POSTGRES_DB=baremaps \
   -e POSTGRES_USER=baremaps \
