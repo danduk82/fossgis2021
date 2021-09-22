@@ -21,14 +21,17 @@ baremaps execute \
 ```bash
 baremaps import \
   --database 'jdbc:postgresql://localhost:5432/baremaps?&user=baremaps&password=baremaps' \
-  --file 'https://download.geofabrik.de/europe/switzerland-latest.osm.pbf'
+  --file 'https://download.geofabrik.de/europe/switzerland-latest.osm.pbf' \
+  --enable-http
 ```
 
 ```bash
 baremaps import \
   --database 'jdbc:postgresql://localhost:5432/baremaps?&user=baremaps&password=baremaps' \
-  --file 'https://download.geofabrik.de/europe/liechtenstein-latest.osm.pbf'
+  --file 'https://download.geofabrik.de/europe/liechtenstein-latest.osm.pbf' \
+  --enable-http
 ```
+
 ## check data and style
 
 ```bash
@@ -68,40 +71,37 @@ to import the dataset, simply add a section that specifies and ID (should be uni
 ```
 
 for labels
+
 ```json
-    {
-      "id" : "customlabel",
-      "type" : "symbol",
-      "source" : "baremaps",
-      "source-layer" : "custom",
-      "filter" : [
-        "all"
-      ],
-      "layout" : {
-        "symbol-placement" : "point",
-        "symbol-spacing" : 350,
-        "symbol-z-order" : "auto",
-        "text-allow-overlap" : false,
-        "text-field" : "{name}",
-        "text-font" : [
-          "Frutiger Neue Italic"
-        ],
-        "text-ignore-placement" : false,
-        "text-keep-upright" : true,
-        "text-letter-spacing" : 0.05,
-        "text-max-width" : 1000,
-        "text-pitch-alignment" : "map",
-        "text-rotation-alignment" : "viewport",
-        "text-size" : 16,
-        "visibility" : "visible"
-      },
-      "paint" : {
-        "text-color" : "rgba(20, 136, 205, 1)",
-        "text-halo-blur" : 1,
-        "text-halo-color" : "rgba(242, 242, 242, 0.7)",
-        "text-halo-width" : 1
-      }
-    }
+{
+  "id": "customlabel",
+  "type": "symbol",
+  "source": "baremaps",
+  "source-layer": "custom",
+  "filter": ["all"],
+  "layout": {
+    "symbol-placement": "point",
+    "symbol-spacing": 350,
+    "symbol-z-order": "auto",
+    "text-allow-overlap": false,
+    "text-field": "{name}",
+    "text-font": ["Frutiger Neue Italic"],
+    "text-ignore-placement": false,
+    "text-keep-upright": true,
+    "text-letter-spacing": 0.05,
+    "text-max-width": 1000,
+    "text-pitch-alignment": "map",
+    "text-rotation-alignment": "viewport",
+    "text-size": 16,
+    "visibility": "visible"
+  },
+  "paint": {
+    "text-color": "rgba(20, 136, 205, 1)",
+    "text-halo-blur": 1,
+    "text-halo-color": "rgba(242, 242, 242, 0.7)",
+    "text-halo-width": 1
+  }
+}
 ```
 
 ## (optional) additional preparation
